@@ -80,8 +80,8 @@ CREATE TABLE `paniers` (
 CREATE TABLE `commandes` (
                           id INT NOT NULL,
                           client_id INT NOT NULL,
-                          `date` DATE DEFAULT CURRENT_DATE ,
-                          montant DOUBLE NOT NULL,
+                          `date` DATETIME DEFAULT CURRENT_TIMESTAMP,
+                          `montant` DOUBLE NOT NULL,
                           status ENUM('livraison','livre','refuse','valide','en cours') DEFAULT ('en cours'),
                           PRIMARY KEY (id),
                           FOREIGN KEY (client_id) references clients (id)
