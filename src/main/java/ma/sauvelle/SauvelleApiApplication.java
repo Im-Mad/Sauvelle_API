@@ -1,9 +1,9 @@
-package ma.sauvelle.sauvelle_api;
+package ma.sauvelle;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"ma.sauvelle"})
 public class SauvelleApiApplication {
 
     public static void main(String[] args) {
