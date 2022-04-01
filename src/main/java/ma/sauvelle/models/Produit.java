@@ -44,18 +44,6 @@ public class Produit {
     )
     private List<MatierePremiere> matieresPremieres;
 
-    @OneToMany(mappedBy = "pk.commande")
-    private Set<CommandeDetail> commandeDetails = new HashSet<>();
-
-    public Set<CommandeDetail> getCommandeDetails() {
-        return commandeDetails;
-    }
-
-    public void setCommandeDetails(Set<CommandeDetail> commandeDetails) {
-        this.commandeDetails = commandeDetails;
-    }
-
-
     public List<MatierePremiere> getMatieresPremieres() {
         return matieresPremieres;
     }
