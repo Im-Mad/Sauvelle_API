@@ -15,21 +15,27 @@ public class Produit {
     @Basic
     @Column(name = "nom", nullable = false, length = 25)
     private String nom;
+
     @Basic
     @Column(name = "description", nullable = false, length = 500)
     private String description;
+
     @Basic
     @Column(name = "prix", nullable = false, precision = 0)
     private double prix;
+
     @ManyToOne
     @JoinColumn(name = "unite_id", nullable = false)
     private Unite unite;
+
     @ManyToOne
     @JoinColumn(name = "categorie_id", nullable = false)
     private Categorie categorie;
+
     @ManyToOne
     @JoinColumn(name = "cooperative_id", nullable = false)
     private Cooperative cooperative;
+
     @ManyToMany
     @JoinTable(
             name = "compositions",

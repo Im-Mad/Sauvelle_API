@@ -5,10 +5,7 @@ import ma.sauvelle.services.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,18 +16,13 @@ public class ProduitController {
     @Autowired
     private ProduitService produitService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<Object> getAllProduits(){
         return new ResponseEntity<>(produitService.findAll(), HttpStatus.OK);
     }
 
-   /*
-   @GetMapping("/search")
-    public List<Produit> searchProduits(@RequestParam String category,
-                                        @RequestParam String composition,
-                                        @RequestParam String matierePremiere,
-                                        @RequestParam String origine){
-        return produitService.search(category,composition,matierePremiere,origine);
+   @GetMapping("/search/{categoryId}")
+    public ResponseEntity<Object> searchProduits(@PathVariable(value = "categoryId") int categoryId){
+       return new ResponseEntity<>(produitService.findByCategorie(categoryId), HttpStatus.OK);
     }
-    */
 }

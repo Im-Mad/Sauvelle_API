@@ -18,9 +18,10 @@ public class ProduitServiceImpl implements ProduitService{
         return produitRepository.findAll();
     }
 
+
     @Override
-    public List<Produit> search(String category, String composition, String matierePremiere, String origine) {
-        return produitRepository.search(category,composition,matierePremiere,origine);
+    public List<Produit> findByCategorie(int categoryId) {
+        return produitRepository.findByCategorieId(categoryId);
     }
 }
 

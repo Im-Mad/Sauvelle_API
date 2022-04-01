@@ -10,5 +10,5 @@ import java.util.List;
 public interface ProduitRepository extends JpaRepository<Produit, Integer> {
     List<Produit> findAll();
 
-    List<Produit> search(String category, String composition, String matierePremiere, String origine);
+    List<Produit> findByCategorieId(int categorieId);
 }

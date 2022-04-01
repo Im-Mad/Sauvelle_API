@@ -8,5 +8,5 @@ public interface ProduitService {
 
     List<Produit> findAll();
 
-    List<Produit> search(String category, String composition, String matierePremiere, String origine);
+    List<Produit> findByCategorie(int categoryId);
 }
