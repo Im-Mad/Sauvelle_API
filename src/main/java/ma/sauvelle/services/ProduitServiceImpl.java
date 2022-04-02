@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class ProduitServiceImpl implements ProduitService{
 
-    @AutowiredorderService
+    @Autowired
     ProduitRepository produitRepository;
 
     @Override
