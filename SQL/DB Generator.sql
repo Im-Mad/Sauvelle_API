@@ -42,6 +42,8 @@ CREATE TABLE `clients` (
                            telephone varchar(20) DEFAULT NULL,
                            ville varchar(10) DEFAULT NULL,
                            email varchar(30) DEFAULT NULL,
+                           username varchar(10) NOT NULL,
+                           password varchar(50) NOT NULL,
                            PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -96,5 +98,23 @@ CREATE TABLE `commandes_details` (
                                      FOREIGN KEY (produit_id) REFERENCES produits (id),
                                      PRIMARY KEY (commande_id,produit_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO unites VALUES (1,'ML');
+INSERT INTO unites VALUES (2,'L');
+INSERT INTO unites VALUES (3,'G');
+INSERT INTO unites VALUES (4,'KG');
+
+INSERT INTO secteurs VALUES (1,'cosmetiques');
+
+INSERT INTO categories VALUES (1,'huiles');
+INSERT INTO categories VALUES (2,'savons');
+
+INSERT INTO cooperatives VALUES (1,'SOUSS',1);
+INSERT INTO cooperatives VALUES (2,'CASABLANCA',1);
+
+INSERT INTO produits VALUES (1,'argan','huilde d agran pour cosmétique',150,2,1,1);
+INSERT INTO produits VALUES (2,'olive','huilde d olive pour cosmétique',100,1,1,2);
+INSERT INTO produits VALUES (3,'argan','savon d agran pour cosmétique',95,3,2,1);
+INSERT INTO produits VALUES (4,'olive','savon d olive pour cosmétique',40,3,2,2);
 
 SET FOREIGN_KEY_CHECKS = 1;
