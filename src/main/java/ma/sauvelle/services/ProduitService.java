@@ -9,4 +9,6 @@ public interface ProduitService {
     List<Produit> findAll();
 
     List<Produit> findByCategorie(int categoryId);
+
+    List<Produit> search(String categoryName,String uniteName,String cooperativeName );
 }

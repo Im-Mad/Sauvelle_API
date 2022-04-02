@@ -17,7 +17,6 @@ public class ClientServiceImpl implements ClientService{
     @Override
     @Transactional
     public Client save(Client client) {
-        System.out.println("Service");
         return clientRepository.save(client);
     }
 

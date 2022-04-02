@@ -22,7 +22,16 @@ public class ProduitController {
     }
 
    @GetMapping("/search/{categoryId}")
-    public ResponseEntity<Object> searchProduits(@PathVariable(value = "categoryId") int categoryId){
+    public ResponseEntity<Object> searchProduitsByCategory(@PathVariable(value = "categoryId") int categoryId){
        return new ResponseEntity<>(produitService.findByCategorie(categoryId), HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<Object> searchProduits(@RequestParam(name = "categorie",required = false) String categrieName,
+                                                 @RequestParam(name = "unite",required = false) String uniteName,
+                                                 @RequestParam(name = "cooperative",required = false) String cooperativeName)
+    {
+        System.out.println(categrieName+uniteName+cooperativeName);
+        return new ResponseEntity<>(produitService.search(categrieName,uniteName,cooperativeName), HttpStatus.OK);
     }
 }
