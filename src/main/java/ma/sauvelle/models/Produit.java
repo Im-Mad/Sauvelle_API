@@ -1,6 +1,7 @@
 package ma.sauvelle.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -36,20 +37,15 @@ public class Produit {
     @JoinColumn(name = "cooperative_id", nullable = false)
     private Cooperative cooperative;
 
-    @ManyToMany
-    @JoinTable(
-            name = "compositions",
-            joinColumns = @JoinColumn(name = "produit_id"),
-            inverseJoinColumns = @JoinColumn(name = "matiere_premiere_id")
-    )
-    private List<MatierePremiere> matieresPremieres;
+    @OneToMany(mappedBy = "pk.matieresPremiere", fetch=FetchType.LAZY)
+    private List<Composition> compositions = new ArrayList<>();
 
-    public List<MatierePremiere> getMatieresPremieres() {
-        return matieresPremieres;
+    public List<Composition> getCompositions() {
+        return compositions;
     }
 
-    public void setMatieresPremieres(List<MatierePremiere> matieresPremieres) {
-        this.matieresPremieres = matieresPremieres;
+    public void setCompositions(List<Composition> compositions) {
+        this.compositions = compositions;
     }
 
     public int getId() {

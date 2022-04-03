@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/produits")
+@RequestMapping("/api/v1/produits")
 public class ProduitController {
 
     @Autowired
@@ -18,11 +18,17 @@ public class ProduitController {
 
     @GetMapping("")
     public ResponseEntity<Object> getAllProduits(){
+        System.out.println("getAll");
         return new ResponseEntity<>(produitService.findAll(), HttpStatus.OK);
     }
 
-   @GetMapping("/search/{categoryId}")
-    public ResponseEntity<Object> searchProduitsByCategory(@PathVariable(value = "categoryId") int categoryId){
+    @GetMapping("/{produitId}")
+    public ResponseEntity<Object> getProduit(@PathVariable int produitId){
+        return new ResponseEntity<>(produitService.findById(produitId), HttpStatus.OK);
+    }
+
+   @GetMapping("/{categoryId}")
+    public ResponseEntity<Object> getProduitsByCategory(@PathVariable int categoryId){
        return new ResponseEntity<>(produitService.findByCategorie(categoryId), HttpStatus.OK);
     }
 
