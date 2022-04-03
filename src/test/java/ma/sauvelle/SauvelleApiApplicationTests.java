@@ -1,4 +1,4 @@
-package ma.sauvelle.sauvelle_api;
+package ma.sauvelle;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
