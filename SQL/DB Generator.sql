@@ -42,7 +42,7 @@ CREATE TABLE `clients` (
                            telephone varchar(20) DEFAULT NULL,
                            ville varchar(10) DEFAULT NULL,
                            email varchar(30) DEFAULT NULL,
-                           username varchar(10) NOT NULL,
+                           username varchar(10) NOT NULL unique ,
                            password varchar(50) NOT NULL,
                            PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -112,9 +112,23 @@ INSERT INTO categories VALUES (2,'savons');
 INSERT INTO cooperatives VALUES (1,'SOUSS',1);
 INSERT INTO cooperatives VALUES (2,'CASABLANCA',1);
 
-INSERT INTO produits VALUES (1,'argan','huilde d agran pour cosmétique',150,2,1,1);
-INSERT INTO produits VALUES (2,'olive','huilde d olive pour cosmétique',100,1,1,2);
-INSERT INTO produits VALUES (3,'argan','savon d agran pour cosmétique',95,3,2,1);
-INSERT INTO produits VALUES (4,'olive','savon d olive pour cosmétique',40,3,2,2);
+INSERT INTO matieres_premieres VALUES (1,'olive verte');
+INSERT INTO matieres_premieres VALUES (2,'argan');
+INSERT INTO matieres_premieres VALUES (3,'eau');
+INSERT INTO matieres_premieres VALUES (4,'savon');
+
+INSERT INTO produits VALUES (1,'argan huile','huilde d agran pour cosmétique',150,2,1,1);
+INSERT INTO produits VALUES (2,'olive huile','huilde d olive pour cosmétique',100,1,1,2);
+INSERT INTO produits VALUES (3,'argan savonnette','savon d agran pour cosmétique',95,3,2,1);
+INSERT INTO produits VALUES (4,'olive savonnette','savon d olive pour cosmétique',40,3,2,2);
+
+INSERT INTO compositions VALUES (1,2,90);
+INSERT INTO compositions VALUES (1,3,10);
+INSERT INTO compositions VALUES (2,1,90);
+INSERT INTO compositions VALUES (2,3,10);
+INSERT INTO compositions VALUES (3,2,40);
+INSERT INTO compositions VALUES (3,4,60);
+INSERT INTO compositions VALUES (4,2,70);
+INSERT INTO compositions VALUES (4,1,30);
 
 SET FOREIGN_KEY_CHECKS = 1;

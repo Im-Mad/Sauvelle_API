@@ -10,4 +10,5 @@ import java.util.List;
 public interface ClientRepository extends JpaRepository<Client, Integer> {
     Client save(Client client);
     List<Client> findAll();
+    Client findClientByUsername(String username);
 }
