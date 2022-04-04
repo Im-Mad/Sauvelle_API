@@ -1,5 +1,7 @@
 package ma.sauvelle.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -14,6 +16,7 @@ public class CompositionId implements Serializable {
     @JoinColumn(name = "matiere_premiere_id")
     private MatierePremiere matieresPremiere;
 
+    @JsonIgnore
     public Produit getProduit() {
         return produit;
     }

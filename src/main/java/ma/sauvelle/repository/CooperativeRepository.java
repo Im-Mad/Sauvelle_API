@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface CooperativeRepository extends JpaRepository<Cooperative, Integer> {
     List<Cooperative> findAll();
+
+    List<Cooperative> findAllBySecteurNom(String secteurNom);
 }

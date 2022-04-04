@@ -18,7 +18,6 @@ public class ProduitController {
 
     @GetMapping("")
     public ResponseEntity<Object> getAllProduits(){
-        System.out.println("getAll");
         return new ResponseEntity<>(produitService.findAll(), HttpStatus.OK);
     }
 

@@ -1,5 +1,16 @@
 package ma.sauvelle.models;
 
 public enum Status {
-    OK,FAILED
+    PENDING,
+    CONFIRMED,
+    PREPARED,
+    SHIPPED,
+    DELIVERED,
+    PAID,
+    OUT_OF_STOCK,
+    UNREACHED,
+    CANCELED,
+    REFUSED,
+    AWAITING_RETURN,
+    RETURNED
 }

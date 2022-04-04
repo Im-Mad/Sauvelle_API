@@ -1,5 +1,7 @@
 package ma.sauvelle.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -28,6 +30,7 @@ public class Composition {
         this.pourcentage = pourcentage;
     }
 
+    @JsonIgnore
     public Produit getProduit() {
         return pk.getProduit();
     }

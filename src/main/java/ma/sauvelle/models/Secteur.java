@@ -12,7 +12,7 @@ public class Secteur {
     private int id;
     @Basic
     @Column(name = "name", nullable = false, length = 20)
-    private String name;
+    private String nom;
 
     public int getId() {
         return id;
@@ -22,12 +22,12 @@ public class Secteur {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNom() {
+        return nom;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNom(String name) {
+        this.nom = name;
     }
 
     @Override
@@ -35,11 +35,11 @@ public class Secteur {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Secteur secteurs = (Secteur) o;
-        return id == secteurs.id && Objects.equals(name, secteurs.name);
+        return id == secteurs.id && Objects.equals(nom, secteurs.nom);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, nom);
     }
 }

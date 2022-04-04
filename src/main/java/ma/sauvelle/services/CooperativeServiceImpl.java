@@ -17,4 +17,9 @@ public class CooperativeServiceImpl implements CooperativeService{
     public List<Cooperative> findAll() {
         return cooperativeRepository.findAll();
     }
+
+    @Override
+    public List<Cooperative> searchBySecteur(String secteurNom) {
+        return cooperativeRepository.findAllBySecteurNom(secteurNom);
+    }
 }

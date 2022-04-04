@@ -13,5 +13,5 @@ public interface ProduitService {
 
     List<Produit> search(String categoryName,String uniteName,String cooperativeName );
 
-    Optional<Produit> findById(int produitId);
+    Produit findById(int produitId);
 }
