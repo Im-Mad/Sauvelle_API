@@ -37,7 +37,7 @@ public class Produit {
     @JoinColumn(name = "cooperative_id", nullable = false)
     private Cooperative cooperative;
 
-    @OneToMany(mappedBy = "pk.matieresPremiere", fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "pk.matieresPremiere", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Composition> compositions = new ArrayList<>();
 
     public List<Composition> getCompositions() {

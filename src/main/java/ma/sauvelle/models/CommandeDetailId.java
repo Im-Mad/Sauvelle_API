@@ -1,5 +1,7 @@
 package ma.sauvelle.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -13,6 +15,7 @@ public class CommandeDetailId implements Serializable {
     @JoinColumn(name = "produit_id")
     private Produit produit;
 
+    @JsonIgnore
     public Commande getCommande() {
         return commande;
     }

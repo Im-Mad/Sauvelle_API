@@ -51,7 +51,7 @@ public class ProduitServiceImpl implements ProduitService{
     }
 
     @Override
-    public Optional<Produit> findById(int produitId) {
+    public Produit findById(int produitId) {
         return produitRepository.findById(produitId);
     }
 }
