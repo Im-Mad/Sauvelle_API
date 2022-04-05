@@ -54,5 +54,10 @@ public class ProduitServiceImpl implements ProduitService{
     public Produit findById(int produitId) {
         return produitRepository.findById(produitId);
     }
+
+    @Override
+    public Produit create(Produit produit) {
+        return produitRepository.save(produit);
+    }
 }
 
