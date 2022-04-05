@@ -36,7 +36,11 @@ public class ProduitController {
                                                  @RequestParam(name = "unite",required = false) String uniteName,
                                                  @RequestParam(name = "cooperative",required = false) String cooperativeName)
     {
-        System.out.println(categrieName+uniteName+cooperativeName);
         return new ResponseEntity<>(produitService.search(categrieName,uniteName,cooperativeName), HttpStatus.OK);
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<Object> createProduit(@RequestBody Produit produit){
+        return new ResponseEntity<>(produitService.create(produit), HttpStatus.OK);
     }
 }
