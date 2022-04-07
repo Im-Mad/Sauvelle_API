@@ -33,6 +33,7 @@ public class CommandeServiceImpl implements CommandeService{
 
     @Override
     public Commande getCommande(int commandId) {
+        System.out.println(commandeRepository.findById(commandId));
         return commandeRepository.findById(commandId);
     }
 

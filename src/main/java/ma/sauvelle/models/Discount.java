@@ -3,11 +3,12 @@ package ma.sauvelle.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "discount")
+@Table(name = "discounts")
 public class Discount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "code")
