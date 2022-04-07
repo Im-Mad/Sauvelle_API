@@ -2,6 +2,7 @@ package ma.sauvelle.controllers;
 
 import ma.sauvelle.models.Commande;
 import ma.sauvelle.services.CommandeService;
+import ma.sauvelle.services.DiscountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,9 @@ public class CommandeController {
     @Autowired
     private CommandeService commandeService;
 
+    @Autowired
+    private DiscountService discountService;
+
     @GetMapping("")
     public ResponseEntity<Object> getAllCommandes(){
         return new ResponseEntity<>(commandeService.getAllCommandes(), HttpStatus.OK);
@@ -22,6 +26,11 @@ public class CommandeController {
     @GetMapping("/{commandeId}")
     public ResponseEntity<Object> getCommande(@PathVariable int commandeId){
         return new ResponseEntity<>(commandeService.getCommande(commandeId), HttpStatus.OK);
+    }
+
+    @GetMapping("/{commandeId}/apply-discount")
+    public ResponseEntity<Object> applyDiscount(@PathVariable int commandeId,@RequestParam(name = "coupon") String discountCode){
+        return new ResponseEntity<>(discountService.applyDiscount(commandeId, discountCode), HttpStatus.OK);
     }
 
     @GetMapping("/{categoryId}")

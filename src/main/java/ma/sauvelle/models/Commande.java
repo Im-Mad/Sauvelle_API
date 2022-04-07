@@ -22,12 +22,35 @@ public class Commande {
     @Basic
     @Column(name = "montant", nullable = false, precision = 0)
     private double montant;
+
+    @Transient
+    private double montantCalcule;
+
     @Basic
     @Column(name = "status", nullable = true)
     private Status status;
 
+    @ManyToOne
+    @JoinColumn(name = "discount_id")
+    private Discount discount;
+
     @OneToMany(mappedBy = "pk.commande")
     private Set<CommandeDetail> commandeDetails = new HashSet<>();
+
+
+    @PostLoad
+    void claculate(){
+        if(discount != null)
+            montantCalcule = montant * (1 - discount.getPourcentage()/100);
+    }
+
+    public Discount getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Discount discount) {
+        this.discount = discount;
+    }
 
     public Set<CommandeDetail> getCommandeDetails() {
         return commandeDetails;
