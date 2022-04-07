@@ -1,5 +1,7 @@
 package ma.sauvelle.models;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -8,6 +10,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "produits")
+@ToString
 public class Produit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -37,7 +40,7 @@ public class Produit {
     @JoinColumn(name = "cooperative_id", nullable = false)
     private Cooperative cooperative;
 
-    @OneToMany(mappedBy = "pk.matieresPremiere", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pk.matieresPremiere", fetch=FetchType.LAZY)
     private List<Composition> compositions = new ArrayList<>();
 
     public List<Composition> getCompositions() {

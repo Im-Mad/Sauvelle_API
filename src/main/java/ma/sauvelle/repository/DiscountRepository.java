@@ -8,6 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface DiscountRepository extends JpaRepository<Discount, Integer> {
 
     Discount findByCode(String code);
-    Discount save(Discount discount);
 
 }

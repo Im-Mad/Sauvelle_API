@@ -26,11 +26,6 @@ public class ProduitController {
         return new ResponseEntity<>(produitService.findById(produitId), HttpStatus.OK);
     }
 
-   @GetMapping("/{categoryId}")
-    public ResponseEntity<Object> getProduitsByCategory(@PathVariable int categoryId){
-       return new ResponseEntity<>(produitService.findByCategorie(categoryId), HttpStatus.OK);
-    }
-
     @GetMapping("/search")
     public ResponseEntity<Object> searchProduits(@RequestParam(name = "categorie",required = false) String categrieName,
                                                  @RequestParam(name = "unite",required = false) String uniteName,
@@ -41,6 +36,7 @@ public class ProduitController {
 
     @PostMapping("/create")
     public ResponseEntity<Object> createProduit(@RequestBody Produit produit){
+        System.out.println(produit);
         return new ResponseEntity<>(produitService.create(produit), HttpStatus.OK);
     }
 }
