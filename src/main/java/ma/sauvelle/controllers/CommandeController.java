@@ -25,17 +25,13 @@ public class CommandeController {
 
     @GetMapping("/{commandeId}")
     public ResponseEntity<Object> getCommande(@PathVariable int commandeId){
+        System.out.println(commandeId);
         return new ResponseEntity<>(commandeService.getCommande(commandeId), HttpStatus.OK);
     }
 
     @GetMapping("/{commandeId}/apply-discount")
     public ResponseEntity<Object> applyDiscount(@PathVariable int commandeId,@RequestParam(name = "coupon") String discountCode){
         return new ResponseEntity<>(discountService.applyDiscount(commandeId, discountCode), HttpStatus.OK);
-    }
-
-    @GetMapping("/{categoryId}")
-    public ResponseEntity<Object> getCommandesByCategory(@PathVariable String status){
-        return new ResponseEntity<>(commandeService.getAllCommandesByStatus(status), HttpStatus.OK);
     }
 
     @PostMapping("/create")
