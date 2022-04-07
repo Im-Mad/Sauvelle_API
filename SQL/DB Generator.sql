@@ -79,14 +79,24 @@ CREATE TABLE `paniers` (
                            FOREIGN KEY (produit_id)  references produits (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+CREATE TABLE `discounts` (
+                           id INT NOT NULL AUTO_INCREMENT,
+                           code VARCHAR(8) NOT NULL,
+                           pourcentage double ,
+                           PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 CREATE TABLE `commandes` (
                              id INT NOT NULL AUTO_INCREMENT,
                              client_id INT NOT NULL,
+                             discount_id INT,
                              `date` DATETIME DEFAULT CURRENT_TIMESTAMP,
                              `montant` DOUBLE NOT NULL,
                              status ENUM('livraison','livre','refuse','valide','en cours') DEFAULT ('en cours'),
                              PRIMARY KEY (id),
-                             FOREIGN KEY (client_id) references clients (id)
+                             FOREIGN KEY (client_id) references clients (id),
+                             FOREIGN KEY (discount_id) references discounts (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `commandes_details` (
