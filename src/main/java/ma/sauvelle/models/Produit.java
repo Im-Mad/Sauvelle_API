@@ -1,6 +1,6 @@
 package ma.sauvelle.models;
 
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,7 +10,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "produits")
-@ToString
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Produit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -42,68 +45,4 @@ public class Produit {
 
     @OneToMany(mappedBy = "pk.matieresPremiere", fetch=FetchType.LAZY)
     private List<Composition> compositions = new ArrayList<>();
-
-    public List<Composition> getCompositions() {
-        return compositions;
-    }
-
-    public void setCompositions(List<Composition> compositions) {
-        this.compositions = compositions;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public double getPrix() {
-        return prix;
-    }
-
-    public void setPrix(double prix) {
-        this.prix = prix;
-    }
-
-    public Unite getUnite() {
-        return unite;
-    }
-
-    public void setUnite(Unite unite) {
-        this.unite = unite;
-    }
-
-    public Categorie getCategorie() {
-        return categorie;
-    }
-
-    public void setCategorie(Categorie categorie) {
-        this.categorie = categorie;
-    }
-
-    public Cooperative getCooperative() {
-        return cooperative;
-    }
-
-    public void setCooperative(Cooperative cooperative) {
-        this.cooperative = cooperative;
-    }
 }

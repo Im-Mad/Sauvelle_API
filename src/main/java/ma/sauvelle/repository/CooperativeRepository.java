@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface CooperativeRepository extends JpaRepository<Cooperative, Integer> {
     List<Cooperative> findAll();
-
+    Cooperative findById(int cooperativeId);
     List<Cooperative> findAllBySecteurNom(String secteurNom);
 }

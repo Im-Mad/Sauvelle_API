@@ -19,6 +19,11 @@ public class CooperativeServiceImpl implements CooperativeService{
     }
 
     @Override
+    public Cooperative findById(int cooperativeId) {
+        return cooperativeRepository.findById(cooperativeId);
+    }
+
+    @Override
     public List<Cooperative> searchBySecteur(String secteurNom) {
         return cooperativeRepository.findAllBySecteurNom(secteurNom);
     }
