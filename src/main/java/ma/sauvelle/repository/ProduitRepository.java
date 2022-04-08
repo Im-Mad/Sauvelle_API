@@ -32,4 +32,6 @@ public interface ProduitRepository extends JpaRepository<Produit, Integer> {
     List<Produit> findByCooperativeNomAndCategorieNom(String cooperativeName, String categoryName);
 
     List<Produit> findByUniteNomAndCategorieNom(String uniteName, String categoryName);
+
+    List<Produit> findByCompositionsPkMatieresPremiereNom(String matierePremiereNom);
 }

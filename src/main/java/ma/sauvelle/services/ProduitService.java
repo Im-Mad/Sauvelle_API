@@ -13,6 +13,9 @@ public interface ProduitService {
 
     List<Produit> search(String categoryName,String uniteName,String cooperativeName );
 
+    List<Produit> searchByMatierePremiere(String matierePremiereNome);
+
+
     Produit findById(int produitId);
 
     Produit create(Produit produit);

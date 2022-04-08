@@ -1,5 +1,6 @@
 package ma.sauvelle.controllers;
 
+import ma.sauvelle.dto.ProduitDto;
 import ma.sauvelle.models.Produit;
 import ma.sauvelle.services.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +35,14 @@ public class ProduitController {
         return new ResponseEntity<>(produitService.search(categrieName,uniteName,cooperativeName), HttpStatus.OK);
     }
 
+    @GetMapping("/search/{matiere-premiere}")
+    public ResponseEntity<Object> searchProduitsParMatierePremiere(@PathVariable(name = "matiere-premiere") String matierePremiereName)
+    {
+        return new ResponseEntity<>(produitService.searchByMatierePremiere(matierePremiereName), HttpStatus.OK);
+    }
+
     @PostMapping("/create")
     public ResponseEntity<Object> createProduit(@RequestBody Produit produit){
-        System.out.println(produit);
         return new ResponseEntity<>(produitService.create(produit), HttpStatus.OK);
     }
 }

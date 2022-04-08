@@ -1,10 +1,16 @@
 package ma.sauvelle.models;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "clients")
+@Getter
+@Setter
+@ToString
 public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -34,92 +40,9 @@ public class Client {
     @Column(name = "password")
     private String password;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="id_role")
+    private Role role;
 
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public String getVille() {
-        return ville;
-    }
-
-    public void setVille(String ville) {
-        this.ville = ville;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Client clients = (Client) o;
-        return id == clients.id && Objects.equals(nom, clients.nom) && Objects.equals(adresse, clients.adresse) && Objects.equals(telephone, clients.telephone) && Objects.equals(ville, clients.ville) && Objects.equals(email, clients.email);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nom, adresse, telephone, ville, email);
-    }
-
-    @Override
-    public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", adresse='" + adresse + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", ville='" + ville + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }

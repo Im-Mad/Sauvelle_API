@@ -35,6 +35,15 @@ CREATE TABLE `cooperatives` (
                                 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
+CREATE TABLE `roles` (
+                         `id` INT NOT NULL AUTO_INCREMENT,
+                         `name` varchar(500) DEFAULT NULL,
+                         PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+INSERT INTO roles VALUES (1,'ROLE_USER');
+INSERT INTO roles VALUES (2,'ROLE_ADMIN');
+
 CREATE TABLE `clients` (
                            id INT NOT NULL AUTO_INCREMENT,
                            nom varchar(25) NOT NULL,
@@ -44,7 +53,9 @@ CREATE TABLE `clients` (
                            email varchar(30) DEFAULT NULL,
                            username varchar(10) NOT NULL unique ,
                            password varchar(50) NOT NULL,
-                           PRIMARY KEY (id)
+                           id_role int DEFAULT 0,
+                           PRIMARY KEY (id),
+                            FOREIGN KEY (id_role) references roles (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `produits` (

@@ -7,6 +7,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "compositions")
 public class Composition {
+
+    @JsonIgnore
     @EmbeddedId
     private CompositionId pk;
 

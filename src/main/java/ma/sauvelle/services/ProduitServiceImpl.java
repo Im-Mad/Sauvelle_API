@@ -51,6 +51,11 @@ public class ProduitServiceImpl implements ProduitService{
     }
 
     @Override
+    public List<Produit> searchByMatierePremiere(String matierePremiereNom) {
+        return produitRepository.findByCompositionsPkMatieresPremiereNom(matierePremiereNom);
+    }
+
+    @Override
     public Produit findById(int produitId) {
         return produitRepository.findById(produitId);
     }
