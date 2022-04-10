@@ -10,7 +10,7 @@ public class Composition {
 
     @JsonIgnore
     @EmbeddedId
-    private CompositionId pk;
+    private CompositionId pk=new CompositionId();
 
     @Basic
     @Column(name = "pourcentage", nullable = false, precision = 0)

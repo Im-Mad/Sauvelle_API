@@ -8,6 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CompositionDto {
-    private String matierePremiere;
+    private int matierePremiereId;
     private long pourcentage;
 }

@@ -43,6 +43,6 @@ public class Produit {
     @JoinColumn(name = "cooperative_id", nullable = false)
     private Cooperative cooperative;
 
-    @OneToMany(mappedBy = "pk.matieresPremiere", fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "pk.produit", fetch=FetchType.LAZY)
     private List<Composition> compositions = new ArrayList<>();
 }

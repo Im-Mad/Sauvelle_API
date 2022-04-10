@@ -1,5 +1,6 @@
 package ma.sauvelle.services;
 
+import ma.sauvelle.dto.ProduitDto;
 import ma.sauvelle.models.Produit;
 
 import java.util.List;
@@ -18,5 +19,5 @@ public interface ProduitService {
 
     Produit findById(int produitId);
 
-    Produit create(Produit produit);
+    Produit create(ProduitDto produit);
 }
