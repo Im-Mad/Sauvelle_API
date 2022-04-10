@@ -1,5 +1,7 @@
 package ma.sauvelle.models;
 
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.HashSet;
@@ -43,6 +45,14 @@ public class Commande {
     void calculate(){
         if(discount != null)
             montantCalcule = montant * (1 - discount.getPourcentage()/100);
+    }
+
+    public double getMontantCalcule() {
+        return montantCalcule;
+    }
+
+    public void setMontantCalcule(double montantCalcule) {
+        this.montantCalcule = montantCalcule;
     }
 
     public Discount getDiscount() {

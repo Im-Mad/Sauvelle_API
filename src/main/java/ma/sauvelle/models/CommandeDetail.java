@@ -23,6 +23,7 @@ public class CommandeDetail {
         return pk;
     }
 
+    @JsonIgnore
     public void setPk(CommandeDetailId id) {
         this.pk = id;
     }

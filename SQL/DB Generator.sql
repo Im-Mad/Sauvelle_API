@@ -104,7 +104,18 @@ CREATE TABLE `commandes` (
                              discount_id INT,
                              `date` DATETIME DEFAULT CURRENT_TIMESTAMP,
                              `montant` DOUBLE NOT NULL,
-                             status ENUM('livraison','livre','refuse','valide','en cours') DEFAULT ('en cours'),
+                             status ENUM('PENDING',
+                                 'CONFIRMED',
+                                 'PREPARED',
+                                 'SHIPPED',
+                                 'DELIVERED',
+                                 'PAID',
+                                 'OUT_OF_STOCK',
+                                 'UNREACHED',
+                                 'CANCELED',
+                                 'REFUSED',
+                                 'AWAITING_RETURN',
+                                 'RETURNED') DEFAULT ('PENDING'),
                              PRIMARY KEY (id),
                              FOREIGN KEY (client_id) references clients (id),
                              FOREIGN KEY (discount_id) references discounts (id)
@@ -151,5 +162,19 @@ INSERT INTO compositions VALUES (3,2,40);
 INSERT INTO compositions VALUES (3,4,60);
 INSERT INTO compositions VALUES (4,2,70);
 INSERT INTO compositions VALUES (4,1,30);
+
+
+INSERT INTO clients  VALUES (1, 'admin', null, null, null, null, 'admin', 'admin', 2);
+INSERT INTO clients  VALUES (3, 'Rachid', null, null, null, null, 'rachid', 'admin', 1);
+
+
+INSERT INTO commandes_details (commande_id, produit_id, quantite, prix_unite) VALUES (1, 1, 4, 44);
+INSERT INTO commandes_details (commande_id, produit_id, quantite, prix_unite) VALUES (4, 1, 4, 44);
+
+INSERT INTO commandes (id, client_id, discount_id, date, montant, status) VALUES (1, 1, null, '2022-04-09 14:54:26', 44, 'PENDING');
+INSERT INTO commandes (id, client_id, discount_id, date, montant, status) VALUES (2, 3, null, '2022-04-10 09:10:56', 0, 'PENDING');
+INSERT INTO commandes (id, client_id, discount_id, date, montant, status) VALUES (3, 3, null, '2022-04-10 09:24:31', 0, 'PENDING');
+INSERT INTO commandes (id, client_id, discount_id, date, montant, status) VALUES (4, 3, null, '2022-04-10 09:37:12', 0, 'PENDING');
+
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -61,12 +61,14 @@ public class CommandeServiceImpl implements CommandeService{
         commande.setDiscount(discountService.getDiscount(commandeDto.getDiscount()));
         commande.setStatus(Status.valueOf(Status.class, commandeDto.getStatus()));
         Set<CommandeDetail> commadeDetails = new HashSet<>();
+        double montant=0;
         commandeDto.getCommandeDetails().stream().forEach(cd -> {
             System.out.println(cd);
             CommandeDetail commandeDetail = new CommandeDetail();
             commandeDetail.setProduit(produitService.findById(cd.getProduitId()));
             commandeDetail.setPrixUnite(cd.getPrixUnite());
             commandeDetail.setQuantite(cd.getQuantite());
+            commande.setMontant(commande.getMontant()+cd.getPrixUnite()*cd.getQuantite());
             commadeDetails.add(commandeDetail);
 
 
