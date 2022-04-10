@@ -1,6 +1,5 @@
 package ma.sauvelle.controllers;
 
-import ma.sauvelle.models.Discount;
 import ma.sauvelle.services.DiscountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
