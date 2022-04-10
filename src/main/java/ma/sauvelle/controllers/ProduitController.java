@@ -6,6 +6,7 @@ import ma.sauvelle.services.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,6 +42,7 @@ public class ProduitController {
         return new ResponseEntity<>(produitService.searchByMatierePremiere(matierePremiereName), HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/create")
     public ResponseEntity<Object> createProduit(@RequestBody ProduitDto produit){
         return new ResponseEntity<>(produitService.create(produit), HttpStatus.OK);
