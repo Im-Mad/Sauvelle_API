@@ -6,4 +6,5 @@ import ma.sauvelle.models.Discount;
 public interface DiscountService {
     Commande applyDiscount(int commandeId, String code);
     Discount createDiscount(double pourcentage);
+    Discount getDiscount(String code);
 }

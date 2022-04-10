@@ -39,6 +39,12 @@ public class DiscountServiceImpl implements DiscountService {
         return discountRepository.save(discount);
     }
 
+    @Override
+    public Discount getDiscount(String code) {
+        return discountRepository.findByCode(code);
+    }
+
+
     static String generateCode(int length){
         char[] chars = "abcdefghijklmnopqrstuvwxyz1234567890".toCharArray();
         String code = "";

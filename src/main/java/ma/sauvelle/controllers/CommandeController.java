@@ -1,5 +1,6 @@
 package ma.sauvelle.controllers;
 
+import ma.sauvelle.dto.CommandeDto;
 import ma.sauvelle.models.Commande;
 import ma.sauvelle.services.CommandeService;
 import ma.sauvelle.services.DiscountService;
@@ -9,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v2/commandes")
+@RequestMapping("/api/v1/commandes")
 public class CommandeController {
 
     @Autowired
@@ -35,7 +36,7 @@ public class CommandeController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Object> createCommandes(@RequestBody Commande commande)
+    public ResponseEntity<Object> createCommandes(@RequestBody CommandeDto commande)
     {
         return new ResponseEntity<>(commandeService.createCommande(commande), HttpStatus.OK);
     }

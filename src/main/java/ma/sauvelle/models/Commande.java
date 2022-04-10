@@ -27,6 +27,7 @@ public class Commande {
     private double montantCalcule;
 
     @Basic
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = true)
     private Status status;
 
@@ -39,7 +40,7 @@ public class Commande {
 
 
     @PostLoad
-    void claculate(){
+    void calculate(){
         if(discount != null)
             montantCalcule = montant * (1 - discount.getPourcentage()/100);
     }

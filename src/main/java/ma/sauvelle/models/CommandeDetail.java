@@ -1,5 +1,7 @@
 package ma.sauvelle.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -41,6 +43,7 @@ public class CommandeDetail {
         this.prixUnite = prixUnite;
     }
 
+    @JsonIgnore
     public Commande getCommande() {
         return pk.getCommande();
     }
