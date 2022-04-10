@@ -9,5 +9,5 @@ public interface CommandeService {
     List<Commande> getAllCommandes();
     List<Commande> getAllCommandesByStatus(String status);
     Commande getCommande(int commandId);
-    Commande createCommande(CommandeDto commande);
+    Commande createCommande(CommandeDto commande,String headerAuth);
 }

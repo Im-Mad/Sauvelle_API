@@ -26,5 +26,10 @@ public class ClientServiceImpl implements ClientService{
         return clientRepository.findAll();
     }
 
+    @Override
+    public Client findClientByUsername(String username) {
+        return clientRepository.findClientByUsername(username);
+    }
+
 
 }

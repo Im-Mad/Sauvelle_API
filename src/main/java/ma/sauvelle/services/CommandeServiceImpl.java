@@ -3,17 +3,13 @@ package ma.sauvelle.services;
 import ma.sauvelle.dto.CommandeDto;
 import ma.sauvelle.models.Commande;
 import ma.sauvelle.models.CommandeDetail;
-import ma.sauvelle.models.Produit;
 import ma.sauvelle.models.Status;
 import ma.sauvelle.repository.CommandeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class CommandeServiceImpl implements CommandeService{
@@ -26,6 +22,9 @@ public class CommandeServiceImpl implements CommandeService{
 
     @Autowired
     private ProduitService produitService;
+
+    @Autowired
+    ClientService clientService;
 
     @Override
     public List<Commande> getAllCommandes() {
@@ -48,19 +47,23 @@ public class CommandeServiceImpl implements CommandeService{
     }
 
     @Override
-    public Commande createCommande(CommandeDto commandeDto) {
+    public Commande createCommande(CommandeDto commandeDto, String username) {
+
         Commande commande = new Commande();
+        commande.setClient(clientService.findClientByUsername(username));
         commande.setDate(new Timestamp(new Date().getTime()));
         commande.setDiscount(discountService.getDiscount(commandeDto.getDiscount()));
         commande.setStatus(Status.valueOf(Status.class, commandeDto.getStatus()));
+        Set<CommandeDetail> commadeDetails = new HashSet<>();
         commandeDto.getCommandeDetails().stream().forEach(cd -> {
-            List<CommandeDetail> commadeDetails = new ArrayList<>();
+            System.out.println(cd);
             CommandeDetail commandeDetail = new CommandeDetail();
             commandeDetail.setProduit(produitService.findById(cd.getProduitId()));
             commandeDetail.setPrixUnite(cd.getPrixUnite());
             commandeDetail.setQuantite(cd.getQuantite());
             commadeDetails.add(commandeDetail);
         });
+        commande.setCommandeDetails(commadeDetails);
         System.out.println(commande);
         return commandeRepository.save(commande);
     }

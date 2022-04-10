@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class CommandeDetail {
 
     @EmbeddedId
-    private CommandeDetailId pk;
+    private CommandeDetailId pk = new CommandeDetailId();
 
     @Basic
     @Column(name = "quantite", nullable = true)
