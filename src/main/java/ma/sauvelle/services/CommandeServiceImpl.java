@@ -4,10 +4,12 @@ import ma.sauvelle.dto.CommandeDto;
 import ma.sauvelle.models.Commande;
 import ma.sauvelle.models.CommandeDetail;
 import ma.sauvelle.models.Status;
+import ma.sauvelle.services.CommandeDetailService;
 import ma.sauvelle.repository.CommandeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.sql.Timestamp;
 import java.util.*;
 
@@ -25,6 +27,9 @@ public class CommandeServiceImpl implements CommandeService{
 
     @Autowired
     ClientService clientService;
+
+    @Autowired
+    CommandeDetailService commandeDetailService;
 
     @Override
     public List<Commande> getAllCommandes() {
@@ -47,6 +52,7 @@ public class CommandeServiceImpl implements CommandeService{
     }
 
     @Override
+    @Transactional
     public Commande createCommande(CommandeDto commandeDto, String username) {
 
         Commande commande = new Commande();
@@ -62,9 +68,17 @@ public class CommandeServiceImpl implements CommandeService{
             commandeDetail.setPrixUnite(cd.getPrixUnite());
             commandeDetail.setQuantite(cd.getQuantite());
             commadeDetails.add(commandeDetail);
+
+
         });
         commande.setCommandeDetails(commadeDetails);
         System.out.println(commande);
-        return commandeRepository.save(commande);
+        Commande savedCommande = commandeRepository.save(commande);
+        commande.getCommandeDetails().stream().forEach(commandeDetail ->{
+            commandeDetail.setCommande(savedCommande);
+            commandeDetailService.save(commandeDetail);
+        });
+
+        return savedCommande;
     }
 }

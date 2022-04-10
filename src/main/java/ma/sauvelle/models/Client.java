@@ -1,5 +1,6 @@
 package ma.sauvelle.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -37,6 +38,7 @@ public class Client {
     private String username;
 
     @Basic
+    @JsonIgnore
     @Column(name = "password")
     private String password;
 

@@ -35,7 +35,7 @@ public class Commande {
     @JoinColumn(name = "discount_id")
     private Discount discount;
 
-    @OneToMany(mappedBy = "pk.commande")
+    @OneToMany(mappedBy = "pk.commande", cascade = CascadeType.PERSIST)
     private Set<CommandeDetail> commandeDetails = new HashSet<>();
 
 
