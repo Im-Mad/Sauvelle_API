@@ -164,8 +164,8 @@ INSERT INTO compositions VALUES (4,2,70);
 INSERT INTO compositions VALUES (4,1,30);
 
 
-INSERT INTO clients  VALUES (1, 'admin', null, null, null, null, 'admin', 'admin', 2);
-INSERT INTO clients  VALUES (3, 'Rachid', null, null, null, null, 'rachid', 'admin', 1);
+INSERT INTO clients  VALUES (1, 'imad', null, null, null, null, 'imad', 'test123', 2);
+INSERT INTO clients  VALUES (3, 'Rachid', null, null, null, null, 'rachid', 'test123', 1);
 
 
 INSERT INTO commandes_details (commande_id, produit_id, quantite, prix_unite) VALUES (1, 1, 4, 44);

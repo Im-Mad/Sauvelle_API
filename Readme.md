@@ -14,3 +14,6 @@ This project is a simple  ecommerce platform API built with Spring boot for lear
 
 [Postman Documentation](https://documenter.getpostman.com/view/16482492/UVyyrrtW)
 
+## Users
+Admin Authorities: imad:test123
+Simple user Authoroties: rachid:test123
